@@ -1,32 +1,24 @@
 import styled from "styled-components";
-import Hero from '../../img/hero.jpg'
+import Hero from "../../img/hero.jpg";
+import { rgba, backgrounds } from "polished";
 
 const StyledHeader = styled.header`
   position: relative;
   height: 95vh;
   background-size: cover;
-  background-position: top;
 
-  background-image: url(${Hero});  
-  &:before {
-    // Pseudo element will only render if it has a content property
-    content: '';
-    // Overlay should occupy the full width and height of parent image container
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    // Overlay background-color
-    background: linear-gradient(to right bottom, ${({theme}) => theme.palette.primary.light}, ${({theme}) => theme.palette.primary.dark});
-    // Overlay opacity, else overlay won't be transparent and show the image
-    opacity: .8;
-  }
+  ${({ theme }) =>
+    backgrounds(
+      `linear-gradient(${rgba(theme.palette.primary.light, 0.8)}, 
+      ${rgba(theme.palette.primary.dark, 0.8)})`,
+      `url(${Hero})`,
+      "top no-repeat"
+    )};
 
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
-  @media ${({theme}) => theme.mediaQueries.phone} {
+  @media ${({ theme }) => theme.mediaQueries.phone} {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
   }
@@ -47,6 +39,7 @@ const StyledHeader = styled.header`
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-  }`
+  }
+`;
 
-export default StyledHeader
+export default StyledHeader;

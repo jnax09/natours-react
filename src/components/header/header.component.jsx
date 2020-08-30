@@ -1,5 +1,5 @@
 import React from 'react'
-import HeadingPrimary from "../commons/headingPrimary/headingPrimary.component";
+import HeadingPrimary from "../commons/heading-primary/heading-primary.component";
 import StyledHeader from "./header.styles";
 import LogoWhite from '../../img/logo-white.png'
 import Button from "../commons/button/button.component";

@@ -1,5 +1,5 @@
 import React from 'react'
-import StyledHeading from "./headingPrimary.styles";
+import StyledHeading from "./heading-primary.styles";
 
 const HeadingPrimary = ({main, sub}) => {
     return (

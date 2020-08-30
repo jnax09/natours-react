@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledHeading = styled.h1`
+const StyledHeadingPrimary = styled.h1`
   color: ${({theme}) => theme.palette.white};
   text-transform: uppercase;
 
@@ -36,4 +36,4 @@ const StyledHeading = styled.h1`
     }
   }`
 
-export default StyledHeading
+export default StyledHeadingPrimary
