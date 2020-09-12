@@ -10,11 +10,13 @@ import StoriesSection from "./components/stories/stories-section.component";
 import BookSection from "./components/book-section/book-section.component";
 import Footer from "./components/footer/footer.component";
 import Popup from "./components/popup/popup.component";
+import Navigation from "./components/navigation/navigation.component";
 
 function App() {
   return (
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
+      <Navigation />
       <Header />
       <main>
         <AboutSection />
