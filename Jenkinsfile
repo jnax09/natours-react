@@ -16,28 +16,29 @@ pipeline {
                 sh 'npm install'
             }
         }
-    // stage('Test and Build') {
-    //   parallel {
-    //     stage('Run Tests') {
-    //       steps {
-    //         sh 'npm run test'
-    //       }
-    //     }
-    //     stage('Create Build Artifacts') {
-    //       steps {
-    //         sh 'npm run build'
-    //       }
-    //     }
-    //   }
-    // }
 
-  // stage('Production') {
-  //   steps {
-  //     withAWS(region:'YOUR_BUCKET_REGION',credentials:'CREDENTIALS_FROM_JENKINS_SETUP') {
-  //     s3Delete(bucket: 'YOUR_BUCKET_NAME', path:'**/*')
-  //     s3Upload(bucket: 'YOUR_BUCKET_NAME', workingDir:'build', includePathPattern:'**/*');
-  //             }
-  //           }
-  //         }
+        stage('Test and Build') {
+            parallel {
+                stage('Run Tests') {
+                    steps {
+                      sh 'npm run test'
+                    }
+                }
+                stage('Create Build Artifacts') {
+                    steps {
+                      sh 'npm run build'
+                    }
+                }
+            }
+        }
+
+        stage('Production') {
+            steps {
+                withAWS(region:'eu-west-1',credentials:'yoyogiftscreds') {
+                    s3Delete(bucket: 'yoyo-gifts-website', path:'**/*')
+                    s3Upload(bucket: 'yoyo-gifts-website', workingDir:'build', includePathPattern:'**/*');
+                }
+            }
+        }
     } 
 }
