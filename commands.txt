@@ -1,3 +1,3 @@
-# initial copy to s3
+# initial copy ops s3
 aws s3 cp --recursive build s3://yoyo-gifts-website --profile cr-sandbox-qa   
 
